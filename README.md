@@ -1,30 +1,41 @@
 # React + TypeScript + Vite
+Este modelo vai lhe fornecer uma base sólida com uma configuração robusta inicial para desenvolver <br /> seu projeto com as tecnologias e ferramentas especificadas.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Estilos globais, criação de componentes e estilização.
+- Hook para chamadas de endpoints que vai te fornecer o `data, isLoading, etc...`.
+- Mock para usar dados locais mockando a api com o contrato da mesma que ainda pode estar em <br /> desenvolvimento pela equipe de back-end.
+- Testes unitários com coverage.
 
-Currently, two official plugins are available:
+<hr />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**O que foi usado para ter esse modelo base:**
+- Vite
+- React
+- TypeScript
+- Axios
+- Vitest
+- Jest
+- Testing Library
+- MSW
+- React Query
+- Styled Components
+- ESLint
+- JSDom
+- React Router Dom
 
-## Expanding the ESLint configuration
+<hr />
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**Configurando para rodar em sua máquina:**
 
-- Configure the top-level `parserOptions` property like this:
+1 - Instale o PNPM em sua máquina: `https://pnpm.io/pt/installation` <br />
+2 - Clone ou baixe o repo: `https://github.com/CodesByTiago/vite-react-typescript` <br />
+3 - Executeo comando para instalar os pacotes necessários: `pnpm run install` <br />
+4 - Rode o projeto executando o comando: `pnpm run dev` <br />
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+**Rodando os testes unitários:**
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Rode o comendo: `pnpm run test`
+
+<hr />
+
+**Fique a vontade para clonar e usar como quiser.** 🚀
