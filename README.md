@@ -34,7 +34,7 @@ Este modelo vai lhe fornecer uma base sólida com uma configuração robusta ini
 
 **Rodando os testes unitários:**
 
-Rode o comendo: `pnpm run test`
+Rode o comando: `pnpm run test`
 
 <hr />
 
