@@ -11,7 +11,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     color: ${({ theme }) => theme.font.colors.primary};
-    background-color: #333;
   }
 `;
 
