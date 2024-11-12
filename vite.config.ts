@@ -31,6 +31,7 @@ export default defineConfig({
         'src/App.tsx',
         'src/**/*.spec.tsx',
         'src/**/*.test.tsx',
+        '**/*.types.ts',
       ],
       thresholds: {
         lines: 80,
