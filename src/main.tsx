@@ -7,12 +7,13 @@ import GlobalStyle from '@styles/globalStyles.ts';
 import { theme } from '@styles/theme.ts';
 import App from './App.tsx';
 
-const queryClient = new QueryClient();
-
-if (process.env.NODE_ENV === 'development') {
-  const { worker } = await import('./mocks/browser');
-  worker.start();
-}
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
