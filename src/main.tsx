@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
+import GlobalStyle from '@styles/globalStyles.ts';
+import { theme } from '@styles/theme.ts';
 import App from './App.tsx';
-import { theme } from './theme.ts';
-import GlobalStyle from './globalStyles.ts';
 
 const queryClient = new QueryClient();
 
@@ -18,7 +18,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+        <BrowserRouter
+          future={{
+            v7_relativeSplatPath: true,
+            v7_startTransition: true,
+          }}
+        >
           <GlobalStyle />
           <App />
         </BrowserRouter>

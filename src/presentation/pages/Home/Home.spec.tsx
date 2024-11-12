@@ -1,9 +1,9 @@
-import { render, screen } from '../../helpers/test-utils';
-import Login from '.';
+import { render, screen } from '@helpers/testUtils';
+import Home from '.';
 
 describe('Home', () => {
   it('should render home page title', () => {
-    render(<Login />);
+    render(<Home />);
     expect(screen.getByText('Home Page')).toBeInTheDocument();
   });
 });

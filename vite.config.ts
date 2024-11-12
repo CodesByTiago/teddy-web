@@ -1,9 +1,10 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tsconfigPaths()],
   server: {
     open: true,
     port: 8080,
@@ -18,14 +19,14 @@ export default defineConfig({
       provider: 'v8',
       include: ['src/**/*'],
       exclude: [
-        'src/routes',
+        'src/presentation/routes',
         'src/mocks',
         'src/services',
         'src/helpers',
-        'src/globalStyles.ts',
         'src/styled.d.ts',
         'src/vite-env.d.ts',
-        'src/theme.ts',
+        'src/styles/globalStyles.ts',
+        'src/styles/theme.ts',
         'src/main.tsx',
         'src/App.tsx',
         'src/**/*.spec.tsx',
