@@ -1,7 +1,7 @@
 import {
-  CreateClientModel,
-  GetClientsModel,
-  UpdateClientModel,
+  CreateCustomerModel,
+  GetCustomersModel,
+  UpdateCustomerModel,
 } from '@domain/models/Customer';
 import apiClient from '@services/apiClient';
 
@@ -9,19 +9,23 @@ const CustomersRepository = {
   // Get Clients Repository
   getCustomers: () => {
     const uri = '/clients';
-    const data = apiClient.get<GetClientsModel[]>(uri).then((res) => res.data);
+    const data = apiClient
+      .get<GetCustomersModel[]>(uri)
+      .then((res) => res.data);
     return data;
   },
 
   // Create Client Repository
   createCustomer: () => {
     const uri = '/clients';
-    const data = apiClient.post<CreateClientModel>(uri).then((res) => res.data);
+    const data = apiClient
+      .post<CreateCustomerModel>(uri)
+      .then((res) => res.data);
     return data;
   },
 
   // Update Client Repository
-  updateCustomer: (id: string, clientData: UpdateClientModel) => {
+  updateCustomer: (id: string, clientData: UpdateCustomerModel) => {
     const uri = `/clients/${id}`;
     const data = apiClient.put(uri, clientData).then((res) => res.data);
     return data;

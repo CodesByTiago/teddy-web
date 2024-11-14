@@ -1,5 +1,5 @@
 // Get Clients Model
-interface GetClientsModel {
+interface GetCustomersModel {
   id: string;
   name: string;
   salary: string;
@@ -8,14 +8,14 @@ interface GetClientsModel {
 }
 
 // Create Client Model
-interface CreateClientModel {
+interface CreateCustomerModel {
   name: string;
   salary: string;
   companyValue: string;
 }
 
 // Update Client Model
-interface UpdateClientModel {
+interface UpdateCustomerModel {
   id: string;
   name: string;
   salary: string;
@@ -23,4 +23,4 @@ interface UpdateClientModel {
   userId: string;
 }
 
-export type { GetClientsModel, CreateClientModel, UpdateClientModel };
+export type { GetCustomersModel, CreateCustomerModel, UpdateCustomerModel };

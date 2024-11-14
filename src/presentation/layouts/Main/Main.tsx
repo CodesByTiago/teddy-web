@@ -1,7 +1,7 @@
 import NavBar from '@components/ui/NavBar';
 import { MainProps } from '@domain/interfaces/MainProps';
 import { MainWrapper } from './Main.style';
-import logo from '../assets/teddy-logo.png';
+import logo from '../../../assets/teddy-logo.png';
 import { Link } from '@components/ui/Link';
 import { useScreenDetector } from '@hooks/useScreenDetector/useScreenDetector';
 
