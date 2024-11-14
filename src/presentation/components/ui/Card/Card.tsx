@@ -11,6 +11,7 @@ import { FiPlus, FiEdit2, FiTrash2, FiMinus } from 'react-icons/fi';
 import Modal from '../Modal';
 import Toast from '../Toast/Toast';
 import { CardProps } from '@domain/interfaces/CardProps';
+import { useUserStore } from '@store/userStore';
 
 export default function Card({
   id,
@@ -24,6 +25,8 @@ export default function Card({
   const [modalTitle, setModalTitle] = useState('');
   const [showToast, setShowToast] = useState(false);
 
+  const { addSelectCustomer, deselectCustomer } = useUserStore();
+
   const handleOpenModal = (content: string, title: string) => {
     setModalContent(content);
     setShowModal(true);
@@ -31,10 +34,14 @@ export default function Card({
   };
 
   const handleAddSelected = () => {
+    console.log(id);
+    addSelectCustomer(id);
     setShowToast(true);
   };
 
-  const handleRemoveSelected = () => {};
+  const handleRemoveSelected = () => {
+    deselectCustomer(id);
+  };
 
   return (
     <CardContainer>

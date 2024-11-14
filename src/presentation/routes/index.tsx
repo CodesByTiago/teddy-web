@@ -4,10 +4,12 @@ import PrivateRoute from './PrivateRoute';
 import Customers from '@pages/Customers/Customers';
 import NotFound from '@pages/NotFound';
 import SelectedCustomers from '@pages/SelectedCustomers/SelectedCustomers';
+import Home from '@pages/Home';
 
 export default function AppRoutes() {
   return (
     <Routes>
+      <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route element={<PrivateRoute />}>
         <Route path='/clientes' element={<Customers />} />

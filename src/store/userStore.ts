@@ -18,9 +18,13 @@ interface CustomerDTO {
 
 export interface StoreModel {
   user: UserDTO;
+  selectedCustomers: CustomerDTO[];
   setUser: (user: UserDTO) => void;
   addCustomer: (customer: CustomerDTO) => void;
   deleteCustomer: (id: string) => void;
+  clearSelected: () => void;
+  deselectCustomer: (id: string) => void;
+  addSelectCustomer: (id: string) => void;
 }
 
 export const useUserStore = create<StoreModel>()(
@@ -32,6 +36,7 @@ export const useUserStore = create<StoreModel>()(
         email: '',
         customers: [],
       },
+      selectedCustomers: [],
       setUser: (user) =>
         set(() => ({
           user,
@@ -52,6 +57,20 @@ export const useUserStore = create<StoreModel>()(
             ),
           },
         })),
+      clearSelected: () => set({ selectedCustomers: [] }),
+      deselectCustomer: (id) =>
+        set((state) => ({
+          selectedCustomers: state.selectedCustomers.filter((c) => c.id !== id),
+        })),
+      addSelectCustomer: (id) =>
+        set((state) => {
+          const customer = state.user.customers.find((c) => c.id === id);
+          if (!customer) return state;
+
+          return {
+            selectedCustomers: [...state.selectedCustomers, customer],
+          };
+        }),
     }),
     {
       name: 'user-storage',
