@@ -5,7 +5,7 @@ import SignIn from './components/SignIn';
 import Register from './components/Register';
 
 export default function Login() {
-  const [registerUser, setRegisterUser] = useState(false);
+  const [registerUser, setRegisterUser] = useState<boolean>(false);
 
   return (
     <LoginWrapper>

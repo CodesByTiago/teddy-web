@@ -7,6 +7,8 @@ import { Button, Form, Input } from '@components/ui/FormElements';
 import { ErrorMessage } from '@components/ui/ErrorMessage';
 import { useRegister } from '@services/repostitories/RegisterRepository';
 import { AxiosError } from 'axios';
+import { useLogin } from '@hooks/useAuth/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const [showToast, setShowToast] = useState(false);
@@ -14,6 +16,9 @@ export default function Register() {
   const [messageType, setMessageType] = useState('');
 
   const { mutate } = useRegister();
+  const loginMutation = useLogin();
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -28,11 +33,25 @@ export default function Register() {
       password: data.password,
     };
 
+    const userInfo = {
+      email: data.email,
+      password: data.password,
+    };
+
     mutate(newRegister, {
       onSuccess: () => {
-        setShowToast(true);
-        setMessageType('success');
-        setMessage('Usuário criado com sucesso!');
+        loginMutation.mutate(userInfo, {
+          onSuccess: () => {
+            navigate('/clientes');
+          },
+          onError: (error) => {
+            if (error instanceof AxiosError) {
+              setShowToast(true);
+              setMessageType('error');
+              setMessage(error.response?.data.message);
+            }
+          },
+        });
       },
       onError: (error) => {
         if (error instanceof AxiosError) {

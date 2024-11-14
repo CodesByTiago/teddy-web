@@ -5,11 +5,17 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Form, Input } from '@components/ui/FormElements';
 import { ErrorMessage } from '@components/ui/ErrorMessage';
 import { SignInModel } from '@domain/models/SignInModel';
+import { useLogin } from '@hooks/useAuth/useAuth';
+import { AxiosError } from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
-  const [showToast, setShowToast] = useState(false);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
+  const [showToast, setShowToast] = useState(false);
+
+  const loginMutation = useLogin();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -18,12 +24,29 @@ export default function Register() {
   } = useForm<SignInModel>();
 
   const onSubmit: SubmitHandler<SignInModel> = (data) => {
-    const newRegister = {
+    const loginData = {
       email: data.email.toLowerCase(),
       password: data.password,
     };
 
-    console.log(newRegister);
+    loginMutation.mutate(loginData, {
+      onSuccess: () => {
+        navigate('/clientes');
+      },
+      onError: (error) => {
+        if (error instanceof AxiosError) {
+          if (error.code !== 'ERR_NETWORK') {
+            setShowToast(true);
+            setMessageType('error');
+            setMessage(error.response?.data.message);
+          } else {
+            setShowToast(true);
+            setMessageType('error');
+            setMessage('Serviço indisponível!');
+          }
+        }
+      },
+    });
   };
 
   return (
@@ -41,7 +64,7 @@ export default function Register() {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Input
             type='email'
-            placeholder='Digite o seu nome:'
+            placeholder='Digite o seu e-mail:'
             {...register('email', { required: 'E-mail é requirido!' })}
           />
           {errors.email && (
@@ -50,7 +73,7 @@ export default function Register() {
 
           <Input
             type='password'
-            placeholder='Digite o seu nome:'
+            placeholder='Digite a sua senha:'
             {...register('password', { required: 'Senha é requirida!' })}
           />
           {errors.email && (

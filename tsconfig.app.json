@@ -20,7 +20,8 @@
       "@services/*": ["src/services/*"],
       "@domain/*": ["src/domain/*"],
       "@viewmodels/*": ["src/hooks/viewmodels/*"],
-      "@context/*": ["src/context/*"]
+      "@context/*": ["src/context/*"],
+      "@store/*": ["src/store/*"]
     },
 
     /* Bundler mode */
