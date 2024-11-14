@@ -14,7 +14,6 @@ export const ModalBackground = styled.div`
 
 export const ModalContainer = styled.div`
   background-color: #fff;
-  padding: 20px;
   border-radius: 4px;
   width: 400px;
   max-width: 90%;
@@ -28,6 +27,7 @@ export const ModalHeader = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing.km6};
   border-bottom: 1px solid #e9e9e9;
   margin-bottom: ${({ theme }) => theme.spacing.km6};
+  padding: 20px;
 `;
 
 export const ModalTitle = styled.p`
@@ -36,6 +36,7 @@ export const ModalTitle = styled.p`
 
 export const ModalContent = styled.div`
   position: relative;
+  padding: 20px;
 `;
 
 export const Button = styled.button`
