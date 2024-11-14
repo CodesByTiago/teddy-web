@@ -9,6 +9,7 @@
 - Refatorar api client @done
 - Configurar chamada do endpoint auth @done
 - Criar componentes sem lógica e com lógica @done
+- Criar layout e navbar @done
 - Criar tela login e sua lógica
 - Criar componente navbar
 - Criar componente card
