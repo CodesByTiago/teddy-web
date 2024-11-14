@@ -10,7 +10,8 @@
 - Configurar chamada do endpoint auth @done
 - Criar componentes sem lógica e com lógica @done
 - Criar layout e navbar @done
-- Criar tela login e sua lógica
+- Criar tela de login @done
+- Criar logica do sistema de auth no front
 - Criar componente navbar
 - Criar componente card
 - Criar component modal

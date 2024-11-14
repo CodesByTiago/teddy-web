@@ -1,24 +1,19 @@
-import { GetClientsModel, UpdateClientModel } from '@domain/models/Client';
-import ClientRepository from '@services/repostitories/ClientRepository';
-import { QueryClient, useMutation, useQuery } from 'react-query';
-
-// Get Clients ViewModel
-const useGetClientsViewModel = () => {
-  return useQuery<GetClientsModel[]>('clients', ClientRepository.getClients);
-};
+import { UpdateClientModel } from '@domain/models/Customer';
+import CustomersRepository from '@services/repostitories/CustomersRepository';
+import { QueryClient, useMutation } from 'react-query';
 
 // Create Clients ViewModel
-const useCreateClientViewModel = () => {
-  return useMutation(ClientRepository.createClient);
+const useCreateCustomerViewModel = () => {
+  return useMutation(CustomersRepository.createCustomer);
 };
 
 // Update Client ViewModel
-const useUpdateClientViewModel = (id: string) => {
+const useUpdateCustomerViewModel = (id: string) => {
   const queryClient = new QueryClient();
 
   return useMutation({
     mutationFn: (clientData: UpdateClientModel) =>
-      ClientRepository.updateClient(id, clientData),
+      CustomersRepository.updateCustomer(id, clientData),
     onSuccess: () => {
       queryClient.invalidateQueries(['clients']);
     },
@@ -26,13 +21,12 @@ const useUpdateClientViewModel = (id: string) => {
 };
 
 // Delete Cleint ViewModel
-const useDeleteClientViewModel = () => {
-  return useMutation(ClientRepository.deleteClient);
+const useDeleteCustomerViewModel = () => {
+  return useMutation(CustomersRepository.deleteCustomer);
 };
 
 export {
-  useGetClientsViewModel,
-  useCreateClientViewModel,
-  useUpdateClientViewModel,
-  useDeleteClientViewModel,
+  useCreateCustomerViewModel,
+  useUpdateCustomerViewModel,
+  useDeleteCustomerViewModel,
 };

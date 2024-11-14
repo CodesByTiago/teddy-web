@@ -4,7 +4,7 @@ export const ToastContainer = styled.div<{ visible?: boolean; type?: string }>`
   position: fixed;
   bottom: 20px;
   right: 20px;
-  max-width: 300px;
+  max-width: 350px;
   padding: 16px;
   border-radius: 8px;
   color: #fff;

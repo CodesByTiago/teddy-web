@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ToastProps } from '../../interfaces/ToastProps';
+import { ToastProps } from '@domain/interfaces/ToastsProps';
 import { CloseButton, ToastContainer } from './Toast.style';
 
 export default function Toast({
