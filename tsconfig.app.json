@@ -21,7 +21,8 @@
       "@domain/*": ["src/domain/*"],
       "@viewmodels/*": ["src/hooks/viewmodels/*"],
       "@context/*": ["src/context/*"],
-      "@store/*": ["src/store/*"]
+      "@store/*": ["src/store/*"],
+      "@presentation/*": ["src/presentation/*"]
     },
 
     /* Bundler mode */

@@ -1,3 +1,4 @@
+import CurrencyInput from 'react-currency-input-field';
 import { styled } from 'styled-components';
 
 export const Form = styled.form`
@@ -9,6 +10,13 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+export const PriceInput = styled(CurrencyInput)`
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;

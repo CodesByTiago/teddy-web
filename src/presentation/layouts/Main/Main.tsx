@@ -4,12 +4,18 @@ import { MainWrapper } from './Main.style';
 import logo from '../../../assets/teddy-logo.png';
 import { Link } from '@components/ui/Link';
 import { useScreenDetector } from '@hooks/useScreenDetector/useScreenDetector';
+import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '@store/authStore';
 
 export default function Main({ children }: MainProps) {
   const { isDesktop } = useScreenDetector();
 
+  const clearToken = useAuthStore((state) => state.clearToken);
+  const navigate = useNavigate();
+
   const logout = () => {
-    localStorage.setItem('user', '');
+    clearToken();
+    navigate('/login');
   };
 
   return (
@@ -19,7 +25,7 @@ export default function Main({ children }: MainProps) {
           <>
             <Link to='/clientes'>Clientes</Link>
             <Link to='/clientes-selecionados'>Clientes selecionados</Link>
-            <Link to='/' onClick={logout}>
+            <Link to='/login' onClick={logout}>
               Sair
             </Link>
           </>

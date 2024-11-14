@@ -48,7 +48,7 @@ export default function NavBar({ logo, children }: NavBarProps) {
         <Collapse isOpen={isOpen}>
           <Link to='/clientes'>Clientes</Link>
           <Link to='/clientes-selecionados'>Clientes selecionados</Link>
-          <Link to='/' onClick={logout}>
+          <Link to='/login' onClick={() => logout()}>
             Sair
           </Link>
         </Collapse>

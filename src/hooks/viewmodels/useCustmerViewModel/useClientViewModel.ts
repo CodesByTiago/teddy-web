@@ -1,4 +1,4 @@
-import { UpdateClientModel } from '@domain/models/Customer';
+import { UpdateCustomerModel } from '@domain/models/Customer';
 import CustomersRepository from '@services/repostitories/CustomersRepository';
 import { QueryClient, useMutation } from 'react-query';
 
@@ -12,7 +12,7 @@ const useUpdateCustomerViewModel = (id: string) => {
   const queryClient = new QueryClient();
 
   return useMutation({
-    mutationFn: (clientData: UpdateClientModel) =>
+    mutationFn: (clientData: UpdateCustomerModel) =>
       CustomersRepository.updateCustomer(id, clientData),
     onSuccess: () => {
       queryClient.invalidateQueries(['clients']);

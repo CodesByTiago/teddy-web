@@ -1,61 +1,49 @@
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useUpdateCustomerViewModel } from '@hooks/viewmodels/useCustmerViewModel/useClientViewModel';
-import { ErrorMessage } from '@components/ui/ErrorMessage';
-import { Button, Input } from '@components/ui/FormElements';
-import { UpdateCustomerModel } from '@domain/models/Customer';
-import { useUserStore } from '@store/userStore';
-import { Form, PriceInput } from '@components/ui/FormElements/FormElements';
-import { SuccessMessage } from '@components/ui/SuccessMessage';
 import { useState } from 'react';
-import Toast from '@components/ui/Toast';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Button, Form, Input } from '@components/ui/FormElements';
+import { ErrorMessage } from '@components/ui/ErrorMessage';
+import { CreateCustomerModel } from '@domain/models/Customer';
+import { SuccessMessage } from '@components/ui/SuccessMessage';
+import { useCreateCustomerViewModel } from '@hooks/viewmodels/useCustmerViewModel/useClientViewModel';
+import { useUserStore } from '@store/userStore';
+import { PriceInput } from '@components/ui/FormElements/FormElements';
 
-export default function Update({ id }: { id: string }) {
-  const [sended, setSended] = useState(false);
-  const [showToast, setShowToast] = useState(false);
-
-  const { mutate } = useUpdateCustomerViewModel(id);
-  const user = useUserStore((state) => state.user);
-  const findCustomer = user.customers.find((customer) => customer.id === id);
-
+export default function Create() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UpdateCustomerModel>({
-    defaultValues: {
-      name: findCustomer?.name,
-      salary: findCustomer?.salary,
-      companyValue: findCustomer?.companyValue,
-    },
-  });
+  } = useForm<CreateCustomerModel>();
 
-  const onSubmit: SubmitHandler<UpdateCustomerModel> = (data) => {
-    const updateCustomer = {
+  const { mutate } = useCreateCustomerViewModel();
+  const { user, addCustomer } = useUserStore();
+
+  const [sended, setSended] = useState(false);
+  const [sendedError, setSendedError] = useState(false);
+
+  const onSubmit: SubmitHandler<CreateCustomerModel> = (data) => {
+    const createCustomer = {
       name: data.name,
       salary: data.salary,
       companyValue: data.companyValue,
+      userId: user.id,
     };
 
-    mutate(updateCustomer, {
-      onSuccess: () => {
+    mutate(createCustomer, {
+      onSuccess: (data) => {
         setSended(true);
+        addCustomer(data);
       },
-      onError: () => {},
+      onError: () => {
+        setSendedError(true);
+      },
     });
   };
 
   return (
     <>
-      {showToast && (
-        <Toast
-          message='Erro ao editar cliente!'
-          duration={3000}
-          onClose={() => setShowToast(false)}
-          type='success'
-        />
-      )}
       {sended ? (
-        <SuccessMessage>Editado com succeso!</SuccessMessage>
+        <SuccessMessage>Cliente cadastrado com succeso</SuccessMessage>
       ) : (
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Input
@@ -88,12 +76,14 @@ export default function Update({ id }: { id: string }) {
             })}
           />
           {errors.companyValue && (
-            <ErrorMessage>Campos valor da empresa é origatório</ErrorMessage>
+            <ErrorMessage>Campos empresa é origatório</ErrorMessage>
           )}
 
           <Button $inverted type='submit'>
-            Editar cliente
+            Criar cliente
           </Button>
+
+          {sendedError && <ErrorMessage>Erro ao criar cliente</ErrorMessage>}
         </Form>
       )}
     </>

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { CardInterface } from '../../interfaces/CardInterface';
 import {
   CardContainer,
   CardFooter,
@@ -10,8 +9,8 @@ import {
 } from './card.style';
 import { FiPlus, FiEdit2, FiTrash2, FiMinus } from 'react-icons/fi';
 import Modal from '../Modal';
-import useClientStore from '../../store/useClientStore';
 import Toast from '../Toast/Toast';
+import { CardProps } from '@domain/interfaces/CardProps';
 
 export default function Card({
   id,
@@ -19,13 +18,11 @@ export default function Card({
   salary,
   companyValue,
   isSelected,
-}: CardInterface) {
+}: CardProps) {
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState('');
   const [modalTitle, setModalTitle] = useState('');
   const [showToast, setShowToast] = useState(false);
-
-  const { addSelectedClient, deleteSelected } = useClientStore();
 
   const handleOpenModal = (content: string, title: string) => {
     setModalContent(content);
@@ -34,13 +31,10 @@ export default function Card({
   };
 
   const handleAddSelected = () => {
-    addSelectedClient(id);
     setShowToast(true);
   };
 
-  const handleRemeveSelected = () => {
-    deleteSelected(id);
-  };
+  const handleRemoveSelected = () => {};
 
   return (
     <CardContainer>
@@ -59,7 +53,7 @@ export default function Card({
       <CardFooter>
         {isSelected ? (
           <CardSelected>
-            <CardInteractiveIcon onClick={() => handleRemeveSelected()}>
+            <CardInteractiveIcon onClick={() => handleRemoveSelected()}>
               <FiMinus color='red' size={20} />
             </CardInteractiveIcon>
           </CardSelected>

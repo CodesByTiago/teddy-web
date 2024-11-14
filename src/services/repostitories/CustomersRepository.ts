@@ -8,7 +8,7 @@ import apiClient from '@services/apiClient';
 const CustomersRepository = {
   // Get Clients Repository
   getCustomers: () => {
-    const uri = '/clients';
+    const uri = '/customers';
     const data = apiClient
       .get<GetCustomersModel[]>(uri)
       .then((res) => res.data);
@@ -16,24 +16,22 @@ const CustomersRepository = {
   },
 
   // Create Client Repository
-  createCustomer: () => {
-    const uri = '/clients';
-    const data = apiClient
-      .post<CreateCustomerModel>(uri)
-      .then((res) => res.data);
+  createCustomer: (createCustomer: CreateCustomerModel) => {
+    const uri = '/customers';
+    const data = apiClient.post(uri, createCustomer).then((res) => res.data);
     return data;
   },
 
   // Update Client Repository
   updateCustomer: (id: string, clientData: UpdateCustomerModel) => {
-    const uri = `/clients/${id}`;
+    const uri = `/customers/${id}`;
     const data = apiClient.put(uri, clientData).then((res) => res.data);
     return data;
   },
 
   // Delete Client Repository
   deleteCustomer: (id: string) => {
-    const uri = `/clients/${id}`;
+    const uri = `/customers/${id}`;
     const data = apiClient.delete(uri).then((res) => res.data);
     return data;
   },

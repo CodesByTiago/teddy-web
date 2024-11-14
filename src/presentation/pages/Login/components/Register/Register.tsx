@@ -87,7 +87,7 @@ export default function Register() {
 
           <Input
             type='email'
-            placeholder='Digite o seu nome:'
+            placeholder='Digite o seu e-mail:'
             {...register('email', { required: 'E-mail é requirido!' })}
           />
           {errors.email && (
@@ -96,7 +96,7 @@ export default function Register() {
 
           <Input
             type='password'
-            placeholder='Digite o seu nome:'
+            placeholder='Digite a sua senha:'
             {...register('password', { required: 'Senha é requirida!' })}
           />
           {errors.email && (

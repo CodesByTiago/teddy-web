@@ -1,29 +1,56 @@
-import { useDeleteClient } from '../../services/ClientsService';
-import useClientStore from '../../store/useClientStore';
-import { Button } from '../Button';
-import { Typography } from '../Typography';
+import { useState } from 'react';
+import { useDeleteCustomerViewModel } from '@hooks/viewmodels/useCustmerViewModel/useClientViewModel';
 import { DeleteWrapper } from './Delete.style';
+import { Typography } from '@components/ui/Typography';
+import { Button } from '@components/ui/FormElements';
+import { useUserStore } from '@store/userStore';
+import { AxiosError } from 'axios';
+import { SuccessMessage } from '@components/ui/SuccessMessage';
+import Toast from '@components/ui/Toast';
 
 export default function Delete({ id }: { id: string }) {
-  const { deleteClient } = useClientStore();
-  const { mutate } = useDeleteClient();
+  const [sended, setSended] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  const { mutate } = useDeleteCustomerViewModel();
+  const { deleteCustomer } = useUserStore();
 
   const handleDeleteClient = () => {
     mutate(id, {
       onSuccess: () => {
-        deleteClient(id);
+        setSended(true);
+        deleteCustomer(id);
+      },
+      onError: (error) => {
+        if (error instanceof AxiosError) {
+          setShowToast(!showToast);
+        }
       },
     });
   };
 
   return (
-    <DeleteWrapper>
-      <Typography>
-        Você está prestes as excluir o cliente: <span>Eduardo</span>
-      </Typography>
-      <Button $inverted onClick={() => handleDeleteClient()}>
-        Excluir cliente
-      </Button>
-    </DeleteWrapper>
+    <>
+      {showToast && (
+        <Toast
+          message='Erro ao excluir cliente!'
+          duration={3000}
+          onClose={() => setShowToast(false)}
+          type='success'
+        />
+      )}
+      {sended ? (
+        <SuccessMessage>Cliente deletado com sucesso!</SuccessMessage>
+      ) : (
+        <DeleteWrapper>
+          <Typography>
+            Você está prestes as excluir o cliente: <span>Eduardo</span>
+          </Typography>
+          <Button $inverted onClick={() => handleDeleteClient()}>
+            Excluir cliente
+          </Button>
+        </DeleteWrapper>
+      )}
+    </>
   );
 }
