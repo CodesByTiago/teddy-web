@@ -6,7 +6,8 @@
 - Criar componente NavLink @done
 - Criar grid system @done
 - Configurar chamada do endpoint de clientes @done
-- Configurar chamada do endpoint de usuários
+- Refatorar api client
+- Configurar chamada do endpoint auth
 - Criar tela login e sua lógica
 - Criar componente navbar
 - Criar componente card

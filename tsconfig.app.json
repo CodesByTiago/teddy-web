@@ -19,7 +19,8 @@
       "@helpers/*": ["src/helpers/*"],
       "@services/*": ["src/services/*"],
       "@domain/*": ["src/domain/*"],
-      "@viewmodels/*": ["src/hooks/viewmodels/*"]
+      "@viewmodels/*": ["src/hooks/viewmodels/*"],
+      "@context/*": ["src/context/*"]
     },
 
     /* Bundler mode */
