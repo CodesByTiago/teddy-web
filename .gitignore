@@ -25,3 +25,5 @@ dist-ssr
 
 # Remove coverage folder
 coverage
+.vercel
+.env
