@@ -14,6 +14,7 @@ import {
 
 export default function Modal({
   id,
+  name,
   onClose,
   content,
   modalTitle,
@@ -23,7 +24,7 @@ export default function Modal({
       case 'Update':
         return <Update id={`${id}`} />;
       case 'Delete':
-        return <Delete id={`${id}`} />;
+        return <Delete id={`${id}`} name={name} />;
       case 'Create':
         return <Create />;
       default:

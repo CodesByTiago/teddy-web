@@ -85,6 +85,7 @@ export default function Card({
       {showModal && (
         <Modal
           id={id}
+          name={name}
           modalTitle={modalTitle}
           content={modalContent}
           onClose={() => setShowModal(false)}

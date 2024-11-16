@@ -8,7 +8,7 @@ import { AxiosError } from 'axios';
 import { SuccessMessage } from '@components/ui/SuccessMessage';
 import Toast from '@components/ui/Toast';
 
-export default function Delete({ id }: { id: string }) {
+export default function Delete({ id, name }: { id: string; name: string }) {
   const [sended, setSended] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
@@ -44,7 +44,7 @@ export default function Delete({ id }: { id: string }) {
       ) : (
         <DeleteWrapper>
           <Typography>
-            Você está prestes as excluir o cliente: <span>Eduardo</span>
+            Você está prestes as excluir o cliente: <span>{name}</span>
           </Typography>
           <Button $inverted onClick={() => handleDeleteClient()}>
             Excluir cliente
