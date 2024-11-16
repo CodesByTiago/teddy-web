@@ -8,7 +8,7 @@ import { AxiosError } from 'axios';
 import { SuccessMessage } from '@components/ui/SuccessMessage';
 import Toast from '@components/ui/Toast';
 
-export default function Delete({ id, name }: { id: string; name: string }) {
+export default function Delete({ id, name }: { id: string; name?: string }) {
   const [sended, setSended] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
