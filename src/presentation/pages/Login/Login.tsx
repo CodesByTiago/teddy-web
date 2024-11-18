@@ -1,11 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Typography } from '@components/ui/Typography';
 import { LoginWrapper, LoginNewUser, LoginContainer } from './Login.styled';
 import SignIn from './components/SignIn';
 import Register from './components/Register';
+import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '@store/authStore';
+import useTokenValidation from '@hooks/shared/useTokenValidation/useTokenValidation';
 
 export default function Login() {
   const [registerUser, setRegisterUser] = useState<boolean>(false);
+  const { token } = useAuthStore();
+  const isValidToken = useTokenValidation(token);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkToken = async () => {
+      if (isValidToken) {
+        navigate('/clientes');
+      }
+    };
+
+    checkToken();
+  }, [isValidToken, navigate]);
 
   return (
     <LoginWrapper>

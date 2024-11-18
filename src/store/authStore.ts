@@ -6,16 +6,13 @@ export const useAuthStore = create<AuthProps>()(
   persist(
     (set) => ({
       token: null,
-      isAuthenticated: false,
       setToken: (token) =>
         set(() => ({
           token,
-          isAuthenticated: true,
         })),
       clearToken: () =>
         set(() => ({
           token: null,
-          isAuthenticated: false,
         })),
     }),
     {

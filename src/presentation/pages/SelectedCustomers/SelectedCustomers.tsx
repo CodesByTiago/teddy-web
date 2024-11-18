@@ -18,7 +18,7 @@ export default function SelectedClients() {
         <Row>
           <Col>
             <Typography>
-              <span>{selectedCustomers?.length}</span> clientes encontrados
+              <span>{selectedCustomers?.length}</span> clientes selecionados
             </Typography>
           </Col>
         </Row>
