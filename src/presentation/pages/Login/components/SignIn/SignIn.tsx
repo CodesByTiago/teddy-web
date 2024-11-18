@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Form, Input } from '@components/ui/FormElements';
 import { ErrorMessage } from '@components/ui/ErrorMessage';
 import { SignInModel } from '@domain/models/SignInModel';
-import { useLogin } from '@hooks/useAuth/useAuth';
+import { useLogin } from '@hooks/shared/useAuth/useAuth';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 

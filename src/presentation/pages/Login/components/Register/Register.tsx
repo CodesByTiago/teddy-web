@@ -7,7 +7,7 @@ import { Button, Form, Input } from '@components/ui/FormElements';
 import { ErrorMessage } from '@components/ui/ErrorMessage';
 import { useRegister } from '@services/repostitories/RegisterRepository';
 import { AxiosError } from 'axios';
-import { useLogin } from '@hooks/useAuth/useAuth';
+import { useLogin } from '@hooks/shared/useAuth/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 export default function Register() {

@@ -3,7 +3,7 @@ import { MainProps } from '@domain/interfaces/MainProps';
 import { MainWrapper } from './Main.style';
 import logo from '../../../assets/teddy-logo.png';
 import { Link } from '@components/ui/Link';
-import { useScreenDetector } from '@hooks/useScreenDetector/useScreenDetector';
+import { useScreenDetector } from '@hooks/shared/useScreenDetector/useScreenDetector';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@store/authStore';
 

@@ -7,7 +7,7 @@ import {
   User,
 } from './NavBar.style';
 import { FiAlignJustify } from 'react-icons/fi';
-import { useScreenDetector } from '@hooks/useScreenDetector/useScreenDetector';
+import { useScreenDetector } from '@hooks/shared/useScreenDetector/useScreenDetector';
 import Collapse from '../Collapse/Collapse';
 import { useState } from 'react';
 import { Link } from '../Link';
